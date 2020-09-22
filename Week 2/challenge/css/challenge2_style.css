@@ -1,0 +1,137 @@
+/* DO NOT MODIFY THE FIRST 2 LINES OF <body> declaration block.
+   You can ADD more CSS script below the 2 lines.
+*/
+body {
+    margin: 0;
+    padding: 0;
+    /* You can add more CSS script below */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Add your CSS script below */
+header {
+    background-color: yellow;
+    width: 100%;
+    margin: 0;
+    padding: 1px;
+}
+
+#main-header h1 {
+    color: blue;
+    font-weight: bold;
+    margin-left: 6%;
+}
+
+#navigation-bar {
+    background-color: darkslategrey;
+}
+
+#navigation-bar ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0; 
+    padding: 0;
+    margin-left: 5%;
+}
+
+#navigation-bar ul li {
+    float: left;
+}
+
+#navigation-bar li a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#top-content{
+    background: url('../images/hyunbin_bg.jpg') no-repeat top center;
+    background-color: burlywood;
+    color: white;
+    padding: 40px;
+    line-height: 1.5;
+    font-size: x-large;
+    text-align: center;
+}
+
+#top-content h1{
+    width: 70%;
+    margin: auto;
+}
+
+/* #main-content {
+    background-color: thistle;
+    border: 1px solid thistle;
+    float: left;
+    width: 40%;
+}
+
+#side-bar {
+    color: white;
+    background-color: green;
+    float: right;
+    width: 50%;
+}
+
+
+#main-footer {
+    margin-top: 10%;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    overflow: auto;
+} */
+
+.main-box{
+    width: 60%;
+    margin: 0 auto;
+}
+
+#main-content{
+    width: 60%;
+    float: left;
+}
+
+#side-bar{
+    float: right;
+    width: 35%;
+    line-height: 1.5;
+    background-color: green;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding: 10px;
+    color: white;
+}
+
+#side-bar::after {
+    content: "";
+    clear: both;
+} 
+
+#main-footer {
+    width: 100%;
+    background-color: darkslategrey;
+    padding: 1px;
+    text-align: center;
+    color: white;
+    margin-bottom: 1%;
+    overflow: auto;
+}
+
+
+/* DO NOT MODIFY THIS */
+@media(max-width: 600px) {
+    #main-content {
+        width: 100%;
+        float: none;
+    }
+
+    #side-bar {
+        width: 100%;
+        float: none;
+    }
+}
