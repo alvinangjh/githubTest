@@ -1,0 +1,217 @@
+<!--
+    Name: 
+    Email: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <title>Sample Midterm - Sentiment Analysis (Part A & Part B)</title>
+
+    <style>
+      .table {
+        margin-top: 2%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- YOUR CODE GOES HERE -->
+    <div class="container">
+      <div class="text-center">
+        <h1>Welcome to Sentiment Analysis</h1>
+
+        <br />
+
+        <p>Enter an English sentence</p>
+
+        <input
+          type="text"
+          id="user_input"
+          class="form-control"
+          placeholder="Sunday Folks waffles .. are cute , nice- but table is ugly!"
+          maxlength="100"
+        />
+
+        <br />
+
+        <button class="btn btn-primary" onclick="run()">Analyze</button>
+
+        <table
+          class="table table-striped table-dark"
+          id="sentiment_table"
+          style="display: none"
+        >
+          <thead>
+            <tr>
+              <th scope="col">Sentiment</th>
+              <th scope="col">Number of Words</th>
+              <th scope="col">Words</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr id="positive_row"></tr>
+            <tr id="negative_row"></tr>
+            <tr id="neutral_row"></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 
+        Test Cases
+
+        Sunday Folks' waffles very,,, really ... are cute- and nice!!! 
+        food was yummy and nice, ambience was excellent! i love this place!!! ugly tables though
+
+    -->
+
+    <script>
+      var dictionary = {
+        positive: [
+          "cute",
+          "nice",
+          "happy",
+          "yummy",
+          "reliable",
+          "generous",
+          "popular",
+          "loving",
+          "love",
+          "like",
+          "appreciate",
+          "awesome",
+          "caring",
+          "tasty",
+          "quick",
+          "speedy",
+          "adore",
+          "good",
+          "great",
+          "excellent",
+          "terrific",
+          "fantastic",
+          "adorable",
+          "attentive",
+          "pretty",
+          "handsome",
+          "perfect",
+          "organized",
+          "amazing",
+          "beautiful",
+        ],
+        negative: [
+          "ugly",
+          "yuck",
+          "yucky",
+          "dirty",
+          "stinky",
+          "smelly",
+          "stingy",
+          "filthy",
+          "neglect",
+          "neglecting",
+          "dislike",
+          "hate",
+          "awful",
+          "terrible",
+          "horrible",
+          "careless",
+          "grumpy",
+          "bad",
+          "harmful",
+          "angry",
+          "upset",
+          "upsetting",
+          "boring",
+          "cruel",
+          "dishonest",
+          "liar",
+          "ignorant",
+          "lousy",
+          "messy",
+          "nasty",
+          "sad",
+        ],
+      };
+
+      // YOUR CODE GOES HERE
+      function run() {
+        var user_input = document.getElementById("user_input").value;
+
+        var positive_count = 0;
+        var negative_count = 0;
+        var neutral = 0;
+
+        var positive_words = [];
+        var negative_words = [];
+        var unknown_words = [];
+
+        if (user_input.length != 0) {
+          var user_input_arr = user_input.split(" ");
+
+          for (text in user_input_arr) {
+            if (/\w/.test(user_input_arr[text]) == true) {
+              punctuation_less_text = user_input_arr[text].replace(
+                /[!?$.,\-']/g,
+                ""
+              );
+
+              if (
+                dictionary.positive.includes(
+                  punctuation_less_text.toLowerCase()
+                )
+              ) {
+                positive_count += 1;
+                positive_words.push(punctuation_less_text);
+              } else if (
+                dictionary.negative.includes(
+                  punctuation_less_text.toLowerCase()
+                )
+              ) {
+                negative_count += 1;
+                negative_words.push(punctuation_less_text);
+              } else {
+                neutral += 1;
+                unknown_words.push(punctuation_less_text);
+              }
+            }
+          }
+
+          var positive_sentence = positive_words.join(", ");
+          var negative_sentence = negative_words.join(", ");
+          var neutral_sentence = unknown_words.join(", ");
+
+          document.getElementById("sentiment_table").style.display = "";
+          document.getElementById("positive_row").innerHTML =
+            "<td>Positive</td> <td>" +
+            positive_count +
+            "</td> <td>" +
+            positive_sentence +
+            "</td>";
+          document.getElementById("negative_row").innerHTML =
+            "<td>Negative</td> <td>" +
+            negative_count +
+            "</td> <td>" +
+            negative_sentence +
+            "</td>";
+          document.getElementById("neutral_row").innerHTML =
+            "<td>Neutral</td> <td>" +
+            neutral +
+            "</td> <td>" +
+            neutral_sentence +
+            "</td>";
+        } else {
+          alert("Ouch! Enter a sentence please!");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -48,8 +48,10 @@ function call_api(heroType) {
 
       for (hero of hero_array) {
         var videoId = call_youtube_api(hero.name);
+        console.log(videoId);
 
-        heroStr += `<div class="card mb-3 mx-auto">
+        heroStr +=
+          `<div class="card mb-3 mx-auto">
               <div class="row no-gutters">
                   <div class="col-md-3">
                       <img src="${hero.img_profile_url}" class="card-img" width="100%" alt="${hero.name}">
@@ -75,7 +77,9 @@ function call_api(heroType) {
                                         
                                         <!-- Modal body -->
                                         <div class="modal-body mx-auto">
-                                            <iframe id="iframe_${ctr}" width="560" height="315" src="https://www.youtube.com/embed/` + videoId + ` frameborder="0" 
+                                            <iframe id="iframe_${ctr}" width="560" height="315" src="https://www.youtube.com/embed/` +
+          videoId +
+          `" frameborder="0" 
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                         </div>
                                                                                 
@@ -152,6 +156,8 @@ function call_api(heroType) {
                   </div> <!-- end of col -->
               </div> <!-- end of row -->
           </div>`;
+
+        ctr += 1;
       }
 
       document.getElementById("hero_cards").innerHTML = heroStr;
