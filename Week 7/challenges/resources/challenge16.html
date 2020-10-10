@@ -80,7 +80,7 @@
       }
 
       function call_google_maps_api(lat, long) {
-        var api_key = "AIzaSyCOyR3h8k2adOfNHFmqARasMDIfJj1cHoI"; // Your own
+        var api_key = ""; // Your own
         var base_url = "https://maps.googleapis.com/maps/api/geocode/json";
         var final_url =
           base_url + "?key=" + api_key + "&address=" + lat + "," + long;
@@ -148,7 +148,7 @@
       }
 
       function call_weather_info_api(lat, long) {
-        var api_key = "888d896427316c6966292aa439df11ad"; // Your own
+        var api_key = ""; // Your own
         var base_url = "http://api.openweathermap.org/data/2.5/weather";
         var final_url =
           base_url + "?lat=" + lat + "&lon=" + long + "&appid=" + api_key;
